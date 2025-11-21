@@ -21,7 +21,7 @@ Le système de jeu de base et l'environnement sont entièrement fonctionnels.
 * **Cycle Temporel :** Implémentation d'une horloge interne simple permettant l'alternance entre l'état **Jour** et l'état **Nuit**.
 * **Synchronisation :** Le système fournit un indicateur (`IsNightTime`) pour synchroniser tous les comportements basés sur le temps (ex. : sommeil des animaux).
 
-### 2. IA Animale Générique (`AnimalBehavior.cs`)
+### 2. Animale Générique (`AnimalBehavior.cs`)
 
 Le script `AnimalBehavior.cs` est **modulaire** et **réutilisable** pour toutes les espèces d'animaux (Poulet, Vache, etc.).
 
@@ -47,14 +47,42 @@ Le script `AnimalBehavior.cs` est **modulaire** et **réutilisable** pour toutes
 
 ---
 
+## Comment Faire Marcher la Simulation
+
+Pour exécuter la simulation dans Unity :
+
+1. **Ouvrir le projet :**  
+   * Lancez Unity Hub.  
+   * Cliquez sur **Add** et sélectionnez le dossier du projet.  
+   * Ouvrez-le avec Unity **2021 LTS ou supérieur**.
+
+2. **Charger la scène principale :**  
+   * Rendez-vous dans le dossier `Assets/Scenes/`.  
+   * Ouvrez la scène principale (par exemple `Ferme verte.unity`).
+
+3. **Vérifier les éléments essentiels dans la scène :**  
+   * La caméra doit contenir le script `CameraController.cs`.  
+   * Les animaux doivent être présents dans la scène avec le script `AnimalBehavior.cs`.  
+   * Le système de temps (cycle jour/nuit) doit être dans la hiérarchie.
+
+4. **Lancer la simulation :**  
+   * Appuyez sur le bouton **Play** dans Unity.  
+   * Les animaux se déplaceront automatiquement et dormiront durant la nuit.  
+   * Le zoom et le déplacement de la caméra fonctionneront immédiatement.
+
+5. **Arrêter la simulation :**  
+   * Cliquez de nouveau sur **Play** pour revenir au mode édition.
+
+---
+
 ## Mise en Route (Quick Start)
 
 Pour ajouter un nouvel animal fonctionnel à la scène :
 
-1.  **Préparation du Sprite :** Importez le sprite de l'animal et assurez-vous qu'il est découpé (`Sliced`).
-2.  **Création du GameObject :** Créez un nouvel objet avec les composants **Sprite Renderer**, **Rigidbody 2D** (Gravity Scale = 0), **Collider 2D**, **Audio Source** et le script **`AnimalBehavior.cs`**.
-3.  **Configuration de l'Animator :**
+1. **Préparation du Sprite :** Importez le sprite de l'animal et assurez-vous qu'il est découpé (`Sliced`).
+2. **Création du GameObject :** Créez un nouvel objet avec les composants **Sprite Renderer**, **Rigidbody 2D** (Gravity Scale = 0), **Collider 2D**, **Audio Source** et le script **`AnimalBehavior.cs`**.
+3. **Configuration de l'Animator :**
     * Créez un nouveau **Animator Controller**.
     * Créez les paramètres booléens **`IsMoving`** et **`IsSleeping`**.
-    * Créez les clips d'animation (`_Idle`, `_Walk`) et configurez les transitions : `Entry` **doit** pointer vers l'état `Idle`.
-4.  **Création du Prefab :** Faites glisser l'animal de la hiérarchie vers le dossier `Prefabs`.
+    * Créez les clips d'animation (`_Idle`, `_Walk`) et configurez les transitions : `Entry` doit pointer vers l'état `Idle`.
+4. **Création du Prefab :** Faites glisser l'animal de la hiérarchie vers le dossier `Prefabs`.
